@@ -16,6 +16,12 @@ const reducer = (state, action) => {
         basket: [...state.basket, action.item],
       };
 
+    case "EMPTY_BASKET":
+      return {
+        ...state,
+        basket: [],
+      };
+
     case "REMOVE_FROM_BASKET":
       /*
       if the basket have one itme that item is 4pc, then if you click one itme to remove the one 

@@ -1,18 +1,9 @@
 const functions = require("firebase-functions");
-const express = require("express");
 const cors = require("cors");
-const { request, response } = require("express");
+const express = require("express");
 const stripe = require("stripe")(
   "sk_test_51Hij2xDAwdLsSOX5zT67dujSUbiodXjerf8DYllhjD703M24G75Ow98qwOB78TLNjoeSNd07ydqq7k0jnMWLPYgE00aCvVTURl"
 );
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
 
 // API
 
@@ -32,7 +23,7 @@ app.post("/payment/create", async (request, response) => {
   console.log("Payment Request Recieved BOOM!!! for this amount >>>> ", total);
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: total,
+    amount: total, // subunits of the currency
     currency: "usd",
   });
 
